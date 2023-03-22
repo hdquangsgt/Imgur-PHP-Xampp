@@ -1,18 +1,13 @@
 <?php
 
-use JetBrains\PhpStorm\NoReturn;
-
 require 'vendor/autoload.php';
 
 $configImgur = include('config/imgur.php');
+header('Content-type: application/json');
 
-redirect('/imgur-php-xampp', main($configImgur));
-
-#[NoReturn] function redirect($url, $result, $statusCode = 303)
-{
-	header('Location: '.$url."?result=$result", true, $statusCode);
-	die();
-}
+echo json_encode([
+	'result' => main($configImgur),
+]);
 
 function main($config): string
 {

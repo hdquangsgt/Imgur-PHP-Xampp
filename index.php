@@ -28,6 +28,7 @@
 	$result = $_GET['result'] ?? '';
 	echo '<textarea id="result" class="result" name="result" rows="10">'.$result.'</textarea>';
 	?>
+    <button style="float:right" type="button" onclick="copyResult()">Copy</button>
 
 </form>
 
@@ -43,8 +44,13 @@
 </style>
 
 <script>
-function loading(event){
-    event.disabled = true;
-    document.getElementById('form').submit();
-}
+    function loading(event) {
+        event.disabled = true;
+        document.getElementById('form').submit();
+    }
+
+    function copyResult() {
+        document.getElementById('result').select();
+        document.execCommand('copy');
+    }
 </script>
