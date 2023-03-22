@@ -1,0 +1,16 @@
+{
+  "name": "hdquangsgt/imgur-demo-php",
+
+  "autoload": {
+    "psr-4": {
+      "": "model/"
+    }
+  },
+
+  "require": {
+    "php": "^8.0",
+    "ext-curl": "*",
+    "guzzlehttp/guzzle": "^7.0",
+    "ext-dom": "*"
+  }
+}
