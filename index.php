@@ -9,13 +9,10 @@
         <label for="content">Content</label>
     </div>
 
-    <textarea
-            id="content"
-            class="content"
-            name="content"
-            rows="10"
-    ></textarea>
-
+	<?php
+	$result = $_GET['result'] ?? '';
+	echo '<textarea id="content" class="content" name="content" rows="10" >'.$result.'</textarea>' ?? '';
+	?>
 
     <div style="text-align: center; margin-top: 10px">
         <button type="submit" onclick="loading(this)">Click</button>
@@ -26,7 +23,7 @@
     </div>
 	<?php
 	$result = $_GET['result'] ?? '';
-	echo '<textarea id="result" class="result" name="result" rows="10">'.$result.'</textarea>';
+	echo '<textarea id="result" class="result" name="result" rows="10" disabled>'.$result.'</textarea>';
 	?>
     <button style="float:right" type="button" onclick="copyResult()">Copy</button>
 
@@ -50,7 +47,10 @@
     }
 
     function copyResult() {
-        document.getElementById('result').select();
+        const elementCopy = document.getElementById('result');
+        elementCopy.disabled = false;
+        elementCopy.select();
         document.execCommand('copy');
+        elementCopy.disabled = true;
     }
 </script>
